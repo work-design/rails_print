@@ -1,0 +1,15 @@
+<div class="media" data-controller="empty">
+  <figure class="media-left">
+    <%# image_tag meta[0].logo, class: 'image is-64x64' if meta[0].logo.present? %>
+  </figure>
+  <div class="media-content">
+    <div class="content">
+      <strong><%= t('jia_bo.admin.title') %></strong>
+    </div>
+    <div data-empty-target="content">
+      <%= link_to({ controller: 'jia_bo/admin/device_organs' }, class: 'tag') do %>
+        <span><%= t('jia_bo.admin.device_organs.index.title') %></span>
+      <% end %>
+    </div>
+  </div>
+</div>
