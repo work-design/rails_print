@@ -1,0 +1,20 @@
+zh:
+  jia_bo:
+    panel:
+      title: 佳博打印机
+      apps:
+        index:
+          title: 商户列表
+      devices:
+        index:
+          title: 设备列表
+        test:
+          title: 打印测试
+          confirm: 确认打印
+      device_organs:
+        index:
+          title: 支持组织
+    admin:
+      device_organs:
+        index:
+          title: 设置打印机
