@@ -1,0 +1,15 @@
+<div class="field is-horizontal">
+  <div class="field-label is-normal">
+    <label class="label"><%= JiaBo::DeviceOrgan.human_attribute_name(:organ_id) %></label>
+  </div>
+  <div class="field-body">
+    <div data-controller="typer" data-typer-method-value="post" data-typer-url-value="<%= url_for(controller: 'org/panel/organs', action: 'search') %>" class="panel">
+      <%= f.hidden_field :organ_id, data: { typer_target: 'value' } %>
+      <div class="control has-icons-left">
+        <%= search_field_tag 'name-like', nil, class: 'input', placeholder: '搜索', data: { typer_target: 'input' } %>
+        <span class="icon is-left"><i class="fa-solid fa-search"></i></span>
+      </div>
+      <div class="panel" id="organs_content"></div>
+    </div>
+  </div>
+</div>

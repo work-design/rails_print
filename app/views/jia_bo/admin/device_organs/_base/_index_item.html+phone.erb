@@ -1,0 +1,7 @@
+<p><%= model.device.device_id %></p>
+<p>
+  <span class="text-grey"><%= model.device.app.name %></span>
+  <% unless model.device.approved? %>
+    <span class="tag is-danger">无效的打印机</span>
+  <% end %>
+</p>

@@ -1,0 +1,8 @@
+<%= button_to({ action: 'destroy' }, method: :delete, form: { data: { turbo_confirm: t('.destroy.confirm') }, class: 'cell' }, class: 'has-column-centered text-danger') do %>
+  <i class="fa-solid fa-trash"></i>
+  <span><%= t('.destroy.title') %></span>
+<% end %>
+<%= button_to({ action: 'update' }, method: :patch, params: { 'device_organ[default]': true }, class: 'text-info', form: { data: { turbo_confirm: t('.update.confirm') }, class: 'cell weui-actionsheet__cell_warn' }) do %>
+  <i class="fa-solid fa-check-double"></i>
+  <span>设为默认</span>
+<% end if @device_organ.device.approved? %>
