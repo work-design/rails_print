@@ -41,80 +41,29 @@ module JiaBo
     end
 
     def get_status
-      params = app.common_params do |p|
-        [p[:memberCode], p[:reqTime], app.api_key].join
-      end
-      params.merge! deviceID: device_id
-
-      r = HTTPX.with(origin: BASE, debug: STDERR, debug_level: 2).post('getStatus', form: params)
-
-      if r.status == 200
-        JSON.parse(r.to_s)
-      else
-        r
-      end
+      app.api.get_status(device_id)
     end
 
     # 取值范围 0-100，建议(0,25,50,75, 85,100)。
     def send_volume(level = 25)
-      params = common_params
-      params.merge! deviceID: device_id, volume: level
-
-      r = HTTPX.with(origin: BASE, debug: STDERR, debug_level: 2).post('sendVolume', form: params)
-
-      if r.status == 200
-        JSON.parse(r.to_s)
-      else
-        r
-      end
+      api.send_volume level
     end
 
     def cancel_print
-      params = common_params
-      params.merge! deviceID: device_id, all: 1
-
-      r = HTTPX.with(origin: BASE, debug: STDERR, debug_level: 2).post('cancelPrint', form: params)
-
-      if r.status == 200
-        JSON.parse(r.to_s)
-      else
-        r
-      end
+      api.cancel_print(all: 1)
     end
 
     def add_to_jia_bo
-      params = common_params
-      params.merge! deviceID: device_id, devName: id
-
-      r = HTTPX.with(origin: BASE, debug: STDERR, debug_level: 2).post('adddev', form: params)
-
-      if r.status == 200
-        result = JSON.parse(r.to_s)
-        self.update dev_id: result['devID']
-      else
-        r
-      end
+      result = api.add_dev devName: id
+      self.update dev_id: result['devID']
     end
 
     def remove_from_jia_bo
-      params = common_params
-      params.merge! deviceID: device_id
-      r = HTTPX.with(origin: BASE).post('deldev', form: params)
-      if r.status == 200
-        JSON.parse(r.to_s)
-      else
-        r
-      end
+      api.del_dev
     end
 
     def approved?
       dev_id.present?
-    end
-
-    def common_params
-      app.common_params do |p|
-        [p[:memberCode], p[:reqTime], app.api_key, device_id].join
-      end
     end
 
     def test_print
@@ -127,6 +76,11 @@ module JiaBo
       print(
         data: ts.render
       )
+    end
+
+    def api
+      return @api if defined? @api
+      @api = Api::Device.new(self)
     end
 
   end
