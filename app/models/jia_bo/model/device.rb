@@ -16,16 +16,17 @@ module JiaBo
     end
 
     def print(msg_no: nil, data: nil, reprint: 0, multi: 0)
-      params.merge!(
+      _api = Api::Device.new(self)
+      params = {
         mode: 2,
         charset: 1,
         msgDetail: data,
         reprint: reprint,
         multi: multi
-      )
+      }
       params.merge! msgNo: msg_no if msg_no.present?
 
-      r = post ''
+      r = _api.msg params
       logger.debug "\e[35m  #{r}  \e[0m"
       r
     end
