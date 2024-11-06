@@ -49,6 +49,10 @@ module JiaBo
       api.send_volume level
     end
 
+    def info
+      api_new.info
+    end
+
     def cancel_print
       api.cancel_print(all: 1)
     end
@@ -85,6 +89,11 @@ module JiaBo
     def api
       return @api if defined? @api
       @api = Api::Device.new(self)
+    end
+
+    def api_new
+      return @api_new if defined? @api_new
+      @api_new = Api::DeviceNew.new(self)
     end
 
   end
