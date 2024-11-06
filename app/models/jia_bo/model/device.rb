@@ -15,10 +15,10 @@ module JiaBo
       after_create_commit :add_to_jia_bo
     end
 
-    def print(msg_no: nil, data: nil, cmd_type: 'CPCL', reprint: 0, multi: 0)
+    def print(msg_no: nil, data: nil, mode: 2, cmd_type: 'TSPL', reprint: 0, multi: 0)
       _api = Api::DeviceMsg.new(self)
       params = {
-        mode: 2,
+        mode: mode,
         charset: 1,
         cmdType: cmd_type,
         msgDetail: data,
@@ -37,7 +37,7 @@ module JiaBo
     end
 
     # 取值范围 0-100，建议(0,25,50,75, 85,100)。
-    def send_volume(level = 25)
+    def send_volume(level = 20)
       api.send_volume level
     end
 
@@ -67,6 +67,21 @@ module JiaBo
       dev_id.present?
     end
 
+    def print_esc
+      @printer = Escpos::Printer.new
+      @printer << "Some text"
+      @printer << Escpos::Helpers.big("Big text")
+      @printer << "Some text"
+      @printer << Escpos::Helpers.big("Big text")
+      x = @printer.to_escpos.bytes.map {|i| i.to_s(16) }.join('')
+      print(
+        data: "#{x}Oa0a0a0a",
+        mode: 3,
+        cmd_type: 'ESC'
+      )
+      x
+    end
+
     def print_tspl
       ts = BaseTspl.new
       ts.bar(height: 20)
@@ -74,10 +89,8 @@ module JiaBo
       ts.text('ddd', x: 320, scale: 2)
       ts.middle_text('订单详情', x: 320)
 
-      print(
-        data: ts.render,
-        cmd_type: 'TSPL'
-      )
+      #print( data: ts.render, cmd_type: 'TSPL')
+      ts.render
     end
 
     def api
