@@ -24,7 +24,7 @@ module JiaBo::Api
     def with_access_token(params: {}, headers: {}, tries: 2)
       params.merge!(
         reqTime: (Time.current.to_f * 1000).round.to_s,
-        memberCode: @app.member_code,
+        memberCode: @app.app.member_code,
         deviceID: @app.device_id
       )
       params.merge! securityCode: Digest::MD5.hexdigest([params[:memberCode], params[:reqTime], @app.app.api_key, @app.device_id].join)
