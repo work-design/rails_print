@@ -17,11 +17,11 @@ module JiaBo::Api
 
     private
     def with_access_token(params: {}, headers: {}, payload: {}, tries: 2)
-      params.merge!(
+      payload.merge!(
         reqTime: (Time.current.to_f * 1000).round.to_s,
         memberCode: @app.member_code
       )
-      params.merge! securityCode: Digest::MD5.hexdigest([params[:memberCode], params[:reqTime], @app.api_key].join)
+      payload.merge! securityCode: Digest::MD5.hexdigest([payload[:memberCode], payload[:reqTime], @app.api_key].join)
       yield
     end
   end
