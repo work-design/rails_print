@@ -50,7 +50,8 @@ module JiaBo
     end
 
     def info
-      api_new.info
+      r = api_new.info
+      r['code'] == 0 ? r['msg'] : r
     end
 
     def cancel_print
