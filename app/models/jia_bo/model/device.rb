@@ -15,11 +15,12 @@ module JiaBo
       after_create_commit :add_to_jia_bo
     end
 
-    def print(msg_no: nil, data: nil, reprint: 0, multi: 0)
+    def print(msg_no: nil, data: nil, cmd_type: 'CPCL', reprint: 0, multi: 0)
       _api = Api::Device.new(self)
       params = {
         mode: 2,
         charset: 1,
+        cmdType: cmd_type,
         msgDetail: data,
         reprint: reprint,
         multi: multi
@@ -74,7 +75,8 @@ module JiaBo
       ts.middle_text('订单详情', x: 320)
 
       print(
-        data: ts.render
+        data: ts.render,
+        cmd_type: 'TSPL'
       )
     end
 
