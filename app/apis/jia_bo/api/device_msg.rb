@@ -4,7 +4,7 @@ module JiaBo::Api
   class DeviceMsg < Base
     BASE = 'https://api.poscom.cn/apisc/'
 
-    def msg(**payload)
+    def msg(payload)
       post 'sendMsg', origin: BASE, **payload
     end
 

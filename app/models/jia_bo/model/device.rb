@@ -16,7 +16,7 @@ module JiaBo
     end
 
     def print(msg_no: nil, data: nil, cmd_type: 'CPCL', reprint: 0, multi: 0)
-      _api = Api::Device.new(self)
+      _api = Api::DeviceMsg.new(self)
       params = {
         mode: 2,
         charset: 1,
