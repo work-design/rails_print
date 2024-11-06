@@ -16,11 +16,7 @@ module JiaBo
     end
 
     def print(msg_no: nil, data: nil, reprint: 0, multi: 0)
-      params = app.common_params do |p|
-        [p[:memberCode], device_id, msg_no, p[:reqTime], app.api_key].join
-      end
       params.merge!(
-        deviceID: device_id,
         mode: 2,
         charset: 1,
         msgDetail: data,
@@ -29,15 +25,9 @@ module JiaBo
       )
       params.merge! msgNo: msg_no if msg_no.present?
 
-      r = HTTPX.with(origin: BASE, debug: STDERR, debug_level: 2).post('sendMsg', form: params)
-
-      if r.status == 200
-        result = JSON.parse(r.to_s)
-        logger.debug "\e[35m  #{result}  \e[0m"
-        result
-      else
-        logger.debug "\e[35m  #{r}  \e[0m"
-      end
+      r = post ''
+      logger.debug "\e[35m  #{r}  \e[0m"
+      r
     end
 
     def get_status
