@@ -67,7 +67,7 @@ module JiaBo
       dev_id.present?
     end
 
-    def test_print
+    def print_tspl
       ts = BaseTspl.new
       ts.bar(height: 20)
       ts.qrcode('xx', x: 20, y: 30, cell_width: 5)
