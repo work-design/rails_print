@@ -55,11 +55,15 @@ module JiaBo
 
     def add_to_jia_bo
       result = api.add_dev devName: id
-      self.update dev_id: result['devID']
+      self.update dev_id: result['devID'] if result['code'] == 1
+      result
     end
 
     def remove_from_jia_bo
-      api.del_dev
+      r = api.del_dev
+      if r['code'] == 1
+        self.update dev_id: nil
+      end
     end
 
     def approved?
