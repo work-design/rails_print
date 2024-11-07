@@ -69,10 +69,10 @@ module JiaBo
 
     def print_esc
       es = BaseEsc.new
-      es << "Some text"
-      es << EscHelper.quad_text("Big text")
-      es << "Some text"
-      es << EscHelper.quad_text("Big text")
+      es.text "Some text"
+      es.quad_text("Big text")
+      es.text "Some text"
+      es.quad_text("Big text")
       x = es.render
       print(
         data: "#{x}Oa0a0a0a",
