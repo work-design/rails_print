@@ -68,18 +68,18 @@ module JiaBo
     end
 
     def print_esc
-      @printer = Escpos::Printer.new
-      @printer << "Some text"
-      @printer << Escpos::Helpers.big("Big text")
-      @printer << "Some text"
-      @printer << Escpos::Helpers.big("Big text")
-      x = @printer.to_escpos.bytes.map {|i| i.to_s(16) }.join('')
+      es = BaseEsc.new
+      es << "Some text"
+      es << EscHelper.quad_text("Big text")
+      es << "Some text"
+      es << EscHelper.quad_text("Big text")
+      x = es.render
       print(
         data: "#{x}Oa0a0a0a",
         mode: 3,
         cmd_type: 'ESC'
       )
-      x
+      es
     end
 
     def print_tspl
