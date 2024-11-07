@@ -75,7 +75,7 @@ module JiaBo
       es.quad_text("Big text")
       x = es.render
       print(
-        data: "#{x}Oa0a0a0a",
+        data: "#{x}",
         mode: 3,
         cmd_type: 'ESC'
       )
