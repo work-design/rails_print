@@ -70,7 +70,8 @@ module JiaBo
     def print_esc
       es = BaseEsc.new
       es.text "Some text 你好"
-      #es.quad_text("Big text")
+      es.text("Big text 我日你妈")
+      es.qrcode('ddddd')
       #es.text "Some text"
       #es.quad_text("Big text")
       x = es.render
