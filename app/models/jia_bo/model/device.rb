@@ -8,6 +8,7 @@ module JiaBo
       attribute :dev_name, :string
       attribute :grp_id, :string
       attribute :dev_id, :string
+      attribute :online, :boolean, default: false
 
       belongs_to :app, counter_cache: true
       has_many :device_organs, dependent: :delete_all

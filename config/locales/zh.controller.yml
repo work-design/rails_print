@@ -2,6 +2,9 @@ zh:
   jia_bo:
     panel:
       title: 佳博打印机
+      home:
+        index:
+          title: 佳博云打印
       apps:
         index:
           title: 商户列表
