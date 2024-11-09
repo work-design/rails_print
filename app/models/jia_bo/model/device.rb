@@ -2,6 +2,10 @@ module JiaBo
   module Model::Device
     extend ActiveSupport::Concern
     BASE = 'https://api.poscom.cn/apisc/'
+    PRINT = {
+      '22' => 'TSPL',
+      '11' => 'ESC'
+    }
 
     included do
       attribute :device_id, :string
@@ -9,6 +13,7 @@ module JiaBo
       attribute :grp_id, :string
       attribute :dev_id, :string
       attribute :online, :boolean, default: false
+      attribute :cmd_type, :string
 
       belongs_to :app, counter_cache: true
       has_many :device_organs, dependent: :delete_all
@@ -33,8 +38,16 @@ module JiaBo
       r
     end
 
+    def update_status!
+      r = get_status
+      self.online = r['online']
+      self.cmd_type = PRINT[info['printType']]
+      self.save
+    end
+
     def get_status
-      app.api.get_status(device_id)
+      r = app.api.get_status(device_id)
+      r['code'] == 1 ? r['statusList'][0] : r
     end
 
     # 取值范围 0-100，建议(0,25,50,75, 85,100)。
