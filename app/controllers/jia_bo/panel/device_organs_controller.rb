@@ -29,7 +29,8 @@ module JiaBo
       params.fetch(:device_organ, {}).permit(
         :device_id,
         :organ_id,
-        :default
+        :default,
+        :aim
       )
     end
 

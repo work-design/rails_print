@@ -4,6 +4,12 @@ module JiaBo
 
     included do
       attribute :default, :boolean, default: true
+      attribute :aim, :string
+
+      enum :aim, {
+        produce: 'produce',
+        receipt: 'receipt'
+      }, prefix: true
 
       belongs_to :device
       belongs_to :organ, class_name: 'Org::Organ'

@@ -1,0 +1,6 @@
+zh:
+  activerecord:
+    enum:
+      jia_bo/aim:
+        produce: 生产
+        receipt: 收款
