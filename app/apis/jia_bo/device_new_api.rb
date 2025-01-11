@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
-module JiaBo::Api
-  class DeviceMsg < Base
+module JiaBo
+  class DeviceNewApi < BaseApi
     BASE = 'https://api.poscom.cn/apisc/'
 
-    def msg(payload)
-      post 'sendMsg', origin: BASE, **payload
+    def info
+      post 'deviceInfo', origin: BASE
     end
 
     private
@@ -15,7 +15,7 @@ module JiaBo::Api
         memberCode: @app.app.member_code,
         deviceID: @app.device_id
       )
-      payload.merge! securityCode: Digest::MD5.hexdigest([payload[:memberCode], @app.device_id, payload[:msgNo], payload[:reqTime], @app.app.api_key].join)
+      payload.merge! securityCode: Digest::MD5.hexdigest([payload[:memberCode], payload[:reqTime], @app.device_id, @app.app.api_key].join)
       yield
     end
 

@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-module JiaBo::Api
-  class Device < Base
+module JiaBo
+  class DeviceApi < BaseApi
     BASE = 'https://api.poscom.cn/apisc/'
 
     def send_volume(level)

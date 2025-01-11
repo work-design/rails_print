@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-module JiaBo::Api
-  class Base
+module JiaBo
+  class BaseApi
     include CommonApi
 
     def post(path, params: {}, headers: {}, origin: nil, debug: nil, **payload)

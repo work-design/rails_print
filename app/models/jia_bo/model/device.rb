@@ -22,7 +22,7 @@ module JiaBo
     end
 
     def print(msg_no: nil, data: nil, mode: 2, cmd_type: 'TSPL', reprint: 0, multi: 0)
-      _api = Api::DeviceMsg.new(self)
+      _api = DeviceMsgApi.new(self)
       params = {
         mode: mode,
         charset: 1,
@@ -111,12 +111,12 @@ module JiaBo
 
     def api
       return @api if defined? @api
-      @api = Api::Device.new(self)
+      @api = DeviceApi.new(self)
     end
 
     def api_new
       return @api_new if defined? @api_new
-      @api_new = Api::DeviceNew.new(self)
+      @api_new = DeviceNewApi.new(self)
     end
 
   end

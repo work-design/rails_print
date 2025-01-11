@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-module JiaBo::Api
-  class App < Base
+module JiaBo
+  class AppApi < BaseApi
     BASE = 'https://api.poscom.cn/apisc/'
 
     def list_devices
