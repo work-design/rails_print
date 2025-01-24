@@ -6,7 +6,7 @@ module JiaBo
 
     def index
       @device_organs = current_organ.device_organs.includes(:device)
-      @apps = JiaBo::App.all
+      @apps = App.all
     end
 
     def scan
