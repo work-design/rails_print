@@ -1,7 +1,7 @@
 zh:
   jia_bo:
     panel:
-      title: 佳博打印机
+      title: 打印机
       home:
         index:
           title: 佳博云打印
@@ -18,7 +18,10 @@ zh:
         index:
           title: 支持组织
     admin:
-      title: 佳博打印机
+      title: 打印机
+      home:
+        index:
+          title: 打印机
       device_organs:
         index:
           title: 设置打印机

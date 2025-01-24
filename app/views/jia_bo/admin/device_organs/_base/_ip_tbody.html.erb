@@ -1,5 +1,3 @@
-<td><%= model.device&.app&.name %></td>
-<td><%= model.device&.device_id %></td>
 <td><%= model.ip %></td>
 <td>
   <%= form_with theme: nil, model: model, url: { action: 'update', id: model.id }, data: { controller: 'input' } do |f| %>

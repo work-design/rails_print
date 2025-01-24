@@ -5,8 +5,8 @@ module JiaBo
     before_action :set_new_device_organ, only: [:new, :create]
 
     def index
-      @device_organs = current_organ.device_organs.includes(:device)
-      @apps = App.all
+      @device_jia_bos = current_organ.device_organs.includes(:device).where(type: 'JiaBo::DeviceJiaBo')
+      @device_ips = current_organ.device_organs.where(type: 'JiaBo::DeviceIp')
     end
 
     def scan

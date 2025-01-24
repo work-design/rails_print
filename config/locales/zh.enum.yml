@@ -1,6 +1,10 @@
 zh:
   activerecord:
     enum:
-      jia_bo/aim:
-        produce: 生产
-        receipt: 收款
+      jia_bo/device_organ:
+        aim:
+          produce: 生产
+          receipt: 收款
+        type:
+          JiaBo::DeviceJiaBo: 佳博打印机
+          JiaBo::DeviceIp: IP 打印机

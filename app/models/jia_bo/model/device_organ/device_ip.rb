@@ -1,5 +1,5 @@
 module JiaBo
-  module Model::DeviceIp
+  module Model::DeviceOrgan::DeviceIp
 
     def print(esc)
       sock = Socket.new(Socket::AF_INET, Socket::SOCK_STREAM, 0)

@@ -1,4 +1,4 @@
-module Factory
+module JiaBo
   class DeviceIp < DeviceOrgan
     include Model::DeviceOrgan::DeviceIp
   end

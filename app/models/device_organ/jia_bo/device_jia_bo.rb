@@ -1,4 +1,4 @@
-module Factory
+module JiaBo
   class DeviceJiaBo < DeviceOrgan
     include Model::DeviceOrgan::DeviceJiaBo
   end

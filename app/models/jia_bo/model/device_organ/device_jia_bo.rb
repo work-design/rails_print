@@ -1,5 +1,5 @@
 module JiaBo
-  module Model::DeviceJiaBo
+  module Model::DeviceOrgan::DeviceJiaBo
 
     def print(esc)
       device.print(
