@@ -35,7 +35,8 @@ module JiaBo
     def device_organ_params
       p = params.fetch(:device_organ, {}).permit(
         :default,
-        :ip
+        :ip,
+        :aim
       )
       p.merge! default_form_params
     end

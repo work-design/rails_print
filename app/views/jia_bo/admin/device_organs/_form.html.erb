@@ -1,1 +1,2 @@
 <%= f.text_field :ip %>
+<%= f.select :aim, options_for_select(JiaBo::DeviceOrgan.options_i18n(:aim), @device_organ.aim) %>
