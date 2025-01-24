@@ -7,7 +7,6 @@ module JiaBo
       r = organ.device.print(
         data: to_tspl
       )
-      r
     end
 
     def print_later
