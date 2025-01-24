@@ -1,11 +1,6 @@
+<td><%= model.type_i18n %></td>
 <td>
   <p><%= model.device.device_id %></p>
   <p><%= model.device.app.name %></p>
-</td>
-<td>
-  <%= form_with theme: nil, model: model, url: { action: 'update', id: model.id }, data: { controller: 'input' } do |f| %>
-    <%= f.check_box :default, data: { input_target: 'checkbox' }, id: nil, class: 'switch is-rounded' %>
-    <label data-action="click->input#check"></label>
-  <% end %>
 </td>
 <td><%= model.aim_i18n %></td>
