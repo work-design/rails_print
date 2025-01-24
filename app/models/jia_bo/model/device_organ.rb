@@ -23,5 +23,19 @@ module JiaBo
       self.class.where.not(id: self.id).where(organ_id: self.organ_id).update_all(default: false)
     end
 
+    def print(model, printer_port = 9100)
+      sock = Socket.new(Socket::AF_INET, Socket::SOCK_STREAM, 0)
+      sock.connect(Socket.pack_sockaddr_in(printer_port, ip))
+      begin
+        sock.send(model.to_esc, 0)
+        logger.debug "指令已发送到打印机"
+      rescue StandardError => e
+        logger.debug "发送失败: #{e.message}"
+      ensure
+        # 关闭连接
+        sock.close unless sock.closed?
+      end
+    end
+
   end
 end
