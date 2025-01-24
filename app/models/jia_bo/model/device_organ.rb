@@ -3,8 +3,10 @@ module JiaBo
     extend ActiveSupport::Concern
 
     included do
+      attribute :type, :string
       attribute :default, :boolean, default: true
       attribute :aim, :string
+      attribute :ip, :string
 
       enum :aim, {
         produce: 'produce',
