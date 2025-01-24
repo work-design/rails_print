@@ -20,18 +20,24 @@ module JiaBo
     end
 
     private
-    def set_device_organ
-      @device_organ = DeviceOrgan.find params[:id]
-    end
-
     def set_app
       @app = App.find params[:app_id]
     end
 
-    def device_params
-      params.fetch(:device_organ, {}).permit(
-        :default
+    def set_device_organ
+      @device_organ = DeviceOrgan.find params[:id]
+    end
+
+    def set_new_device_organ
+      @device_organ = DeviceOrgan.new(device_organ_params)
+    end
+
+    def device_organ_params
+      p = params.fetch(:device_organ, {}).permit(
+        :default,
+        :ip
       )
+      p.merge! default_form_params
     end
 
   end

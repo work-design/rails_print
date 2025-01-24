@@ -13,8 +13,8 @@ module JiaBo
         receipt: 'receipt'
       }, prefix: true
 
-      belongs_to :device
-      belongs_to :organ, class_name: 'Org::Organ'
+      belongs_to :device, optional: true
+      belongs_to :organ, class_name: 'Org::Organ', optional: true
 
       after_update :set_default, if: -> { default? && saved_change_to_default? }
     end
