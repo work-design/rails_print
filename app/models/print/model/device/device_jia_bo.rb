@@ -86,34 +86,6 @@ module Print
       dev_id.present?
     end
 
-    def print_esc
-      es = BaseEsc.new
-      es.text "Some text 你好"
-      es.text("Big text 我日你妈")
-      es.qrcode('ddddd')
-      #es.text "Some text"
-      #es.quad_text("Big text")
-      x = es.render
-      puts x
-      print(
-        data: x,
-        mode: 3,
-        cmd_type: 'ESC'
-      )
-      es
-    end
-
-    def print_tspl
-      ts = BaseTspl.new
-      ts.bar(height: 20)
-      ts.qrcode('xx', x: 20, y: 30, cell_width: 5)
-      ts.text('ddd', x: 320, scale: 2)
-      ts.middle_text('订单详情', x: 320)
-
-      #print( data: ts.render, cmd_type: 'TSPL')
-      ts.render
-    end
-
     def api
       return @api if defined? @api
       @api = DeviceApi.new(self)
