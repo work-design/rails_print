@@ -5,7 +5,7 @@ module Print
     before_action :set_new_device, only: [:new, :create]
 
     def index
-      @devices = current_organ.devices.includes(:device)
+      @devices = current_organ.devices.includes(:printer)
     end
 
     def scan
