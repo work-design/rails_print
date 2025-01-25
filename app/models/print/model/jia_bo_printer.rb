@@ -1,5 +1,5 @@
 module Print
-  module Model::Device::DeviceJiaBo
+  module Model::JiaBoPrinter
     extend ActiveSupport::Concern
     BASE = 'https://api.poscom.cn/apisc/'
     PRINT = {

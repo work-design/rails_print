@@ -5,7 +5,7 @@ module Print
   end
 
   def self.table_name_prefix
-    'jia_bo_'
+    'print_'
   end
 
 end

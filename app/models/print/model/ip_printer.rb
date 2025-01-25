@@ -1,8 +1,10 @@
 module Print
-  module Model::Device::DeviceIp
+  module Model::IpPrinter
+    extend ActiveSupport::Concern
 
-    def ip
-      extra['ip']
+    included do
+      attribute :ip, :string
+      attribute :port, :string
     end
 
     def print(esc)
