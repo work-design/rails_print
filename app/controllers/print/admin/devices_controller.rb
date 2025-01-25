@@ -5,8 +5,7 @@ module Print
     before_action :set_new_device, only: [:new, :create]
 
     def index
-      @device_jia_bos = current_organ.device_organs.includes(:device).where(type: 'Print::DeviceJiaBo')
-      @device_ips = current_organ.device_organs.where(type: 'Print::DeviceIp')
+      @devices = current_organ.devices.includes(:device)
     end
 
     def scan
@@ -19,28 +18,20 @@ module Print
       @device.test_print
     end
 
-    def sync
-      @app.sync_devices
-    end
-
     private
-    def set_app
-      @app = App.find params[:app_id]
-    end
-
     def set_device
       @device = Device.find params[:id]
     end
 
     def set_new_device
-      @device = Device.new(device_organ_params)
+      @device = Device.new(device_params)
     end
 
-    def device_organ_params
-      p = params.fetch(:device_organ, {}).permit(
-        :default,
-        :ip,
-        :aim
+    def device_params
+      p = params.fetch(:device, {}).permit(
+        :aim,
+        :printer_type,
+        :printer_id
       )
       p.merge! default_form_params
     end
