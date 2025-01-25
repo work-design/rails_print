@@ -3,11 +3,8 @@ module Print
     extend ActiveSupport::Concern
 
     included do
-      has_one :device_receipt, -> { where(aim: 'receipt') }, class_name: 'Print::DeviceOrgan'
-      has_one :device_produce, -> { where(aim: 'produce') }, class_name: 'Print::DeviceOrgan'
-
-      has_many :device_organs, class_name: 'Print::DeviceOrgan', dependent: :delete_all
-      has_many :devices, class_name: 'Print::Device', through: :device_organs
+      has_one :receipt_printer, -> { where(aim: 'receipt') }, class_name: 'Print::Device'
+      has_one :produce_printer, -> { where(aim: 'produce') }, class_name: 'Print::Device'
     end
 
   end
