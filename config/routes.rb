@@ -18,7 +18,7 @@ Rails.application.routes.draw do
       end
       namespace :admin, defaults: { namespace: 'admin' } do
         root 'home#index'
-        resources :device_organs do
+        resources :devices do
           collection do
             post :scan
           end

@@ -1,14 +1,14 @@
-Gem::Specification.new do |spec|
-  spec.name        = 'rails_jia_bo'
-  spec.version     = '0.0.1'
-  spec.authors     = [ "qinmingyuan" ]
-  spec.email       = [ "mingyuan0715@foxmail.com" ]
-  spec.homepage    = "https://github.com/work-design/rails_jia_bo"
-  spec.summary     = "Summary of RailsJiaBo."
-  spec.description = "Description of RailsJiaBo."
-  spec.license     = "MIT"
+Gem::Specification.new do |s|
+  s.name = 'rails_print'
+  s.version = '0.0.1'
+  s.authors = [ 'qinmingyuan' ]
+  s.email = [ "mingyuan0715@foxmail.com" ]
+  s.homepage = 'https://github.com/work-design/rails_print'
+  s.summary = "Summary of RailsJiaBo."
+  s.description = "Description of RailsJiaBo."
+  s.license = 'MIT'
 
-  spec.files = Dir.chdir(File.expand_path(__dir__)) do
+  s.files = Dir.chdir(File.expand_path(__dir__)) do
     Dir[
       '{app,config,db,lib}/**/*',
       'MIT-LICENSE',
@@ -17,5 +17,5 @@ Gem::Specification.new do |spec|
     ]
   end
 
-  spec.add_dependency "rails", ">= 7.2.1"
+  s.add_dependency "rails", ">= 7.2.1"
 end

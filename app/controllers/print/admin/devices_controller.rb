@@ -1,8 +1,8 @@
 module Print
-  class Admin::DeviceOrgansController < Admin::BaseController
+  class Admin::DevicesController < Admin::BaseController
     before_action :set_app, only: [:scan]
-    before_action :set_device_organ, only: [:show, :edit, :update, :destroy, :actions, :test]
-    before_action :set_new_device_organ, only: [:new, :create]
+    before_action :set_device, only: [:show, :edit, :update, :destroy, :actions, :test]
+    before_action :set_new_device, only: [:new, :create]
 
     def index
       @device_jia_bos = current_organ.device_organs.includes(:device).where(type: 'Print::DeviceJiaBo')
@@ -16,7 +16,11 @@ module Print
     end
 
     def test
-      @device_organ.device.test
+      @device.test_print
+    end
+
+    def sync
+      @app.sync_devices
     end
 
     private
@@ -24,12 +28,12 @@ module Print
       @app = App.find params[:app_id]
     end
 
-    def set_device_organ
-      @device_organ = DeviceOrgan.find params[:id]
+    def set_device
+      @device = Device.find params[:id]
     end
 
-    def set_new_device_organ
-      @device_organ = DeviceOrgan.new(device_organ_params)
+    def set_new_device
+      @device = Device.new(device_organ_params)
     end
 
     def device_organ_params

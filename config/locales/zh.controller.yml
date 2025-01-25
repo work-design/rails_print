@@ -1,5 +1,5 @@
 zh:
-  jia_bo:
+  print:
     panel:
       title: 打印机
       home:
@@ -14,14 +14,11 @@ zh:
         test:
           title: 打印测试
           confirm: 确认打印
-      device_organs:
-        index:
-          title: 支持组织
     admin:
       title: 打印机
       home:
         index:
           title: 打印机
-      device_organs:
+      devices:
         index:
           title: 设置打印机

@@ -1,7 +1,7 @@
 zh:
   activerecord:
     enum:
-      jia_bo/device_organ:
+      print/device:
         aim:
           produce: 生产
           receipt: 收款
