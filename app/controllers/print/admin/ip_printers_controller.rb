@@ -1,16 +1,10 @@
 module Print
   class Admin::IpPrintersController < Admin::BaseController
-    before_action :set_device, only: [:show, :edit, :update, :destroy, :actions]
-    before_action :set_new_device, only: [:new, :create]
+    before_action :set_ip_printer, only: [:show, :edit, :update, :destroy, :actions]
+    before_action :set_new_ip_printer, only: [:new, :create]
 
     def index
-      @device_ips = IpPrinter.default_where(default_params).where(type: 'Print::DeviceIp')
-    end
-
-    def scan
-      @ip_printer = @app.devices.find_or_initialize_by(device_id: params[:result])
-      @ip_printer.device_organs.find_or_initialize_by(organ_id: current_organ.id)
-      @ip_printer.save
+      @ip_printers = IpPrinter.default_where(default_params).page(params[:page])
     end
 
     def test
@@ -18,17 +12,18 @@ module Print
     end
 
     private
-    def set_device
+    def set_ip_printer
       @ip_printer = IpPrinter.find params[:id]
     end
 
-    def set_new_device
-      @ip_printer = IpPrinter.new(device_organ_params)
+    def set_new_ip_printer
+      @ip_printer = IpPrinter.new(ip_printer_params)
     end
 
-    def device_organ_params
+    def ip_printer_params
       p = params.fetch(:ip_printer, {}).permit(
-        :ip
+        :ip,
+        :port
       )
       p.merge! default_form_params
     end

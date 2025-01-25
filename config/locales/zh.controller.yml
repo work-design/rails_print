@@ -22,3 +22,6 @@ zh:
       devices:
         index:
           title: 设置打印机
+      ip_printers:
+        index:
+          title: IP 打印机

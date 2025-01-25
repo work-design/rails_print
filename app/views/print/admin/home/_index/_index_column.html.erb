@@ -1,7 +1,10 @@
 <div class="fixed-grid has-6-cols">
   <div class="grid">
-    <%= link_to({ controller: 'device_organs' }, class: 'cell button is-fullwidth') do %>
-      <span><%= t('.device_organs.index.title') %></span>
+    <%= link_to({ controller: 'ip_printers' }, class: 'cell button is-fullwidth') do %>
+      <span><%= t('.ip_printers.index.title') %></span>
+    <% end %>
+    <%= link_to({ controller: 'devices' }, class: 'cell button is-fullwidth') do %>
+      <span><%= t('.devices.index.title') %></span>
     <% end %>
   </div>
 </div>
