@@ -4,7 +4,6 @@ module Print
 
     included do
       attribute :aim, :string
-      attribute :cmd_type, :string
       attribute :online, :boolean, default: false
 
       enum :aim, {
