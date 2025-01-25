@@ -5,10 +5,10 @@ zh:
       home:
         index:
           title: 佳博云打印
-      apps:
+      jia_bo_apps:
         index:
-          title: 商户列表
-      devices:
+          title: 佳博商户
+      jia_bo_printers:
         index:
           title: 设备列表
         test:
