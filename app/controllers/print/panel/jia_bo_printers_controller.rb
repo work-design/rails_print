@@ -1,5 +1,5 @@
 module Print
-  class Panel::DevicesController < Panel::BaseController
+  class Panel::JiaBoPrintersController < Panel::BaseController
     before_action :set_app, only: [:scan]
     before_action :set_device_organ, only: [:show, :edit, :update, :destroy, :actions, :test]
     before_action :set_new_device_organ, only: [:new, :create]

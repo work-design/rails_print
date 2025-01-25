@@ -5,8 +5,8 @@ Rails.application.routes.draw do
     namespace :print, defaults: { business: 'print' } do
       namespace :panel, defaults: { namespace: 'panel' } do
         root 'home#index'
-        resources :apps do
-          resources :devices do
+        resources :jia_bo_apps do
+          resources :jia_bo_printers do
             collection do
               post :sync
             end
@@ -23,6 +23,7 @@ Rails.application.routes.draw do
             post :scan
           end
         end
+        resources :ip_printers
       end
     end
 

@@ -13,7 +13,12 @@ module Print
       attribute :grp_id, :string
       attribute :dev_id, :string
 
-      belongs_to :app, counter_cache: true
+      belongs_to :jia_bo_app, counter_cache: true
+
+      enum :cmd_type, {
+        esc: 'ESC',
+        tspl: 'TSPL'
+      }, prefix: true
 
       after_create_commit :add_to_jia_bo
     end
@@ -27,7 +32,7 @@ module Print
     end
 
     def print(msg_no: nil, data: nil, mode: 2, cmd_type: 'TSPL', reprint: 0, multi: 0)
-      _api = DeviceMsgApi.new(self)
+      msg_api = JiaBo::DeviceMsgApi.new(self)
       params = {
         mode: mode,
         charset: 1,
@@ -38,7 +43,7 @@ module Print
       }
       params.merge! msgNo: msg_no if msg_no.present?
 
-      r = _api.msg params
+      r = msg_api.msg params
       logger.debug "\e[35m  #{r}  \e[0m"
       r
     end
@@ -61,6 +66,7 @@ module Print
     end
 
     def info
+      api_new = JiaBo::DeviceNewApi.new(self)
       r = api_new.info
       r['code'] == 0 ? r['msg'] : r
     end
@@ -88,12 +94,7 @@ module Print
 
     def api
       return @api if defined? @api
-      @api = DeviceApi.new(self)
-    end
-
-    def api_new
-      return @api_new if defined? @api_new
-      @api_new = DeviceNewApi.new(self)
+      @api = JiaBo::DeviceApi.new(self)
     end
 
   end

@@ -5,6 +5,8 @@ module Print
     included do
       attribute :ip, :string
       attribute :port, :string
+
+      belongs_to :organ, class_name: 'Org::Organ', optional: true
     end
 
     def print(esc)
