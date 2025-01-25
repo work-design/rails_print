@@ -1,4 +1,4 @@
-module JiaBo
+module Print
   class Admin::HomeController < Admin::BaseController
 
     def index

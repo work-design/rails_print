@@ -1,4 +1,4 @@
-module JiaBo
+module Print
 
   def self.use_relative_model_naming?
     true

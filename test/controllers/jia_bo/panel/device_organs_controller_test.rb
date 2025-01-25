@@ -1,5 +1,5 @@
 require 'test_helper'
-class JiaBo::Panel::DeviceOrgansControllerTest < ActionDispatch::IntegrationTest
+class Print::Panel::DeviceOrgansControllerTest < ActionDispatch::IntegrationTest
 
   setup do
     @device_organ = device_organs(:one)

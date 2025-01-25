@@ -1,4 +1,4 @@
-module JiaBo
+module Print
   module Model::Device::DeviceIp
 
     def ip

@@ -1,12 +1,12 @@
-module JiaBo
+module Print
   class Admin::DeviceOrgansController < Admin::BaseController
     before_action :set_app, only: [:scan]
     before_action :set_device_organ, only: [:show, :edit, :update, :destroy, :actions, :test]
     before_action :set_new_device_organ, only: [:new, :create]
 
     def index
-      @device_jia_bos = current_organ.device_organs.includes(:device).where(type: 'JiaBo::DeviceJiaBo')
-      @device_ips = current_organ.device_organs.where(type: 'JiaBo::DeviceIp')
+      @device_jia_bos = current_organ.device_organs.includes(:device).where(type: 'Print::DeviceJiaBo')
+      @device_ips = current_organ.device_organs.where(type: 'Print::DeviceIp')
     end
 
     def scan

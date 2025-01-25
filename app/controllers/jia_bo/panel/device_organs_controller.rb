@@ -1,4 +1,4 @@
-module JiaBo
+module Print
   class Panel::DeviceOrgansController < Panel::BaseController
     before_action :set_app, :set_device
     before_action :set_device_organ, only: [:show, :edit, :update, :destroy, :actions]

@@ -1,4 +1,4 @@
-module JiaBo
+module Print
   class DeviceIp < DeviceOrgan
     include Model::DeviceOrgan::DeviceIp
   end

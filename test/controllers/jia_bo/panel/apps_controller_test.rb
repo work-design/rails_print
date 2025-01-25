@@ -1,5 +1,5 @@
 require 'test_helper'
-module JiaBo
+module Print
   class Panel::AppsControllerTest < ActionDispatch::IntegrationTest
 
     setup do

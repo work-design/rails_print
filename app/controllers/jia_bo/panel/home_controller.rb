@@ -1,4 +1,4 @@
-module JiaBo
+module Print
   class Panel::HomeController < Panel::BaseController
 
     def index

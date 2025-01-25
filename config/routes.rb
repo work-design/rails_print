@@ -2,7 +2,7 @@
 Rails.application.routes.draw do
   scope RailsCom.default_routes_scope do
 
-    namespace :jia_bo, defaults: { business: 'jia_bo' } do
+    namespace :print, defaults: { business: 'print' } do
       namespace :panel, defaults: { namespace: 'panel' } do
         root 'home#index'
         resources :apps do
@@ -13,7 +13,6 @@ Rails.application.routes.draw do
             member do
               patch :test
             end
-            resources :device_organs
           end
         end
       end

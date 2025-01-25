@@ -1,4 +1,4 @@
-module JiaBo
+module Print
   class App < ApplicationRecord
     include Model::App
   end

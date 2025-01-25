@@ -1,4 +1,4 @@
-module JiaBo
+module Print
   module Model::Device::DeviceJiaBo
     extend ActiveSupport::Concern
     BASE = 'https://api.poscom.cn/apisc/'
@@ -12,7 +12,6 @@ module JiaBo
       attribute :dev_name, :string
       attribute :grp_id, :string
       attribute :dev_id, :string
-      attribute :online, :boolean, default: false
 
       belongs_to :app, counter_cache: true
 

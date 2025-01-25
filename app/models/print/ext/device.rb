@@ -1,5 +1,5 @@
 # frozen_string_literal: true
-module JiaBo
+module Print
   module Ext::Device
     extend ActiveSupport::Concern
 

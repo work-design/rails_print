@@ -1,4 +1,4 @@
-module JiaBo
+module Print
   class Panel::DevicesController < Panel::BaseController
     before_action :set_app
     before_action :set_device, only: [:show, :edit, :update, :destroy, :test]

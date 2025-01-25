@@ -1,4 +1,4 @@
-module JiaBo
+module Print
   module Model::App
     extend ActiveSupport::Concern
 
