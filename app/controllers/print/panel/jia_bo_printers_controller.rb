@@ -1,5 +1,5 @@
 module Print
-  class Admin::JiaBoPrintersController < Admin::BaseController
+  class Panel::JiaBoPrintersController < Panel::BaseController
     before_action :set_jia_bo_app
     before_action :set_jia_bo_printer, only: [:show, :edit, :update, :destroy, :actions, :test]
     before_action :set_new_jia_bo_printer, only: [:new, :create]
@@ -24,7 +24,7 @@ module Print
 
     private
     def set_jia_bo_app
-      @jia_bo_apps = JiaBoApp.find params[:jia_bo_app_id]
+      @jia_bo_app = JiaBoApp.find params[:jia_bo_app_id]
     end
 
     def set_jia_bo_printer

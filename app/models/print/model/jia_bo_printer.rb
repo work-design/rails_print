@@ -12,6 +12,8 @@ module Print
       attribute :dev_name, :string
       attribute :grp_id, :string
       attribute :dev_id, :string
+      attribute :online, :boolean
+      attribute :cmd_type, :string
 
       belongs_to :organ, class_name: 'Org::Organ', optional: true
 
@@ -58,7 +60,7 @@ module Print
     end
 
     def get_status
-      r = app.api.get_status(device_id)
+      r = jia_bo_app.api.get_status(device_id)
       r['code'] == 1 ? r['statusList'][0] : r
     end
 
