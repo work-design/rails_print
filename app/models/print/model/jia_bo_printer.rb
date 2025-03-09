@@ -30,14 +30,14 @@ module Print
     end
 
     def print(esc)
-      device.print(
+      remote_print(
         data: esc.render_raw,
         mode: 3,
         cmd_type: cmd_type.upcase
       )
     end
 
-    def print(msg_no: nil, data: nil, mode: 2, cmd_type: 'TSPL', reprint: 0, multi: 0)
+    def remote_print(msg_no: nil, data: nil, mode: 2, cmd_type: 'TSPL', reprint: 0, multi: 0)
       msg_api = JiaBo::DeviceMsgApi.new(self)
       params = {
         mode: mode,
