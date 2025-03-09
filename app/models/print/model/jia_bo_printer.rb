@@ -13,7 +13,6 @@ module Print
       attribute :grp_id, :string
       attribute :dev_id, :string
       attribute :online, :boolean
-      attribute :cmd_type, :string
 
       belongs_to :organ, class_name: 'Org::Organ', optional: true
 
