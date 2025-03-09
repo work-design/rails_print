@@ -12,10 +12,10 @@ module JiaBo
     def with_access_token(params: {}, headers: {}, payload: {})
       payload.merge!(
         reqTime: (Time.current.to_f * 1000).round.to_s,
-        memberCode: @app.app.member_code,
+        memberCode: @app.jia_bo_app.member_code,
         deviceID: @app.device_id
       )
-      payload.merge! securityCode: Digest::MD5.hexdigest([payload[:memberCode], payload[:reqTime], @app.device_id, @app.app.api_key].join)
+      payload.merge! securityCode: Digest::MD5.hexdigest([payload[:memberCode], payload[:reqTime], @app.device_id, @app.jia_bo_app.api_key].join)
       yield
     end
 

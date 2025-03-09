@@ -13,7 +13,7 @@ module Print
 
     def api
       return @api if defined? @api
-      @api = Jiabo::AppApi.new(self)
+      @api = JiaBo::AppApi.new(self)
     end
 
     def sync_devices
