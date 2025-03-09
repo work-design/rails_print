@@ -17,6 +17,9 @@ module Print
       belongs_to :organ, class_name: 'Org::Organ', optional: true
 
       belongs_to :jia_bo_app, counter_cache: true
+      has_many :devices, as: :printer
+
+      accepts_nested_attributes_for :devices
 
       enum :cmd_type, {
         esc: 'ESC',

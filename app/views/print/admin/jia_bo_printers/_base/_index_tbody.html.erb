@@ -3,4 +3,8 @@
   <p><%= model.device_id %></p>
   <p><%= model.dev_name %></p>
 </td>
-<td><%= %></td>
+<td>
+<% model.devices.each do |device| %>
+  <p><%= device.aim_i18n %></p>
+<% end %>
+</td>

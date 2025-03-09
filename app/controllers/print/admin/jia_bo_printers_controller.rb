@@ -15,7 +15,11 @@ module Print
     end
 
     def test
-      @device.test_print
+      @jia_bo_printer.test_print
+    end
+
+    def edit
+      @jia_bo_printer.devices.presence || @jia_bo_printer.devices.build
     end
 
     def sync
@@ -39,7 +43,7 @@ module Print
       p = params.fetch(:jia_bo_printer, {}).permit(
         :device_id,
         :dev_name,
-        :aim
+        devices_attributes: [:aim]
       )
       p.merge! default_form_params
     end
