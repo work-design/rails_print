@@ -23,6 +23,7 @@ Rails.application.routes.draw do
             post :scan
           end
         end
+        resources :jia_bo_printers
         resources :ip_printers
       end
     end

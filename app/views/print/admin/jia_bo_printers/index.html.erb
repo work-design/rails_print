@@ -2,7 +2,5 @@
 <%= render 'index_actions' %>
 
 <%= render layout: 'index_table' do %>
-  <%= render partial: 'ip_tbody', layout: 'index_tr', collection: @device_ips, as: :model %>
-  <%= render partial: 'jia_bo_tbody', layout: 'index_tr', collection: @device_jia_bos, as: :model %>
-  <%= render partial: 'app_tbody', layout: 'app_tr', collection: @apps, as: :model %>
+  <%= render partial: 'index_tbody', layout: 'index_tr', collection: @jia_bo_printers, as: :model %>
 <% end %>

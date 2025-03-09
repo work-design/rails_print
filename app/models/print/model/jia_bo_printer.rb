@@ -13,6 +13,8 @@ module Print
       attribute :grp_id, :string
       attribute :dev_id, :string
 
+      belongs_to :organ, class_name: 'Org::Organ', optional: true
+
       belongs_to :jia_bo_app, counter_cache: true
 
       enum :cmd_type, {
