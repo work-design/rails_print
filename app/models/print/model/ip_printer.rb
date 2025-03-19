@@ -11,7 +11,10 @@ module Print
       accepts_nested_attributes_for :devices
     end
 
-    def print(esc)
+    def print
+      pr = BaseEsc.new
+      esc = yield pr
+
       sock = Socket.new(Socket::AF_INET, Socket::SOCK_STREAM, 0)
       sock.connect(Socket.pack_sockaddr_in(9100, ip))
       begin

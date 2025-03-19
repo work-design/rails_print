@@ -29,7 +29,10 @@ module Print
       after_create_commit :add_to_jia_bo
     end
 
-    def print(esc)
+    def print
+      pr = BaseEsc.new
+      esc = yield pr
+
       remote_print(
         data: esc.render_raw,
         mode: 3,
