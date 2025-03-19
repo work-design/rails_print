@@ -16,9 +16,9 @@ module Print
       sock.connect(Socket.pack_sockaddr_in(9100, ip))
       begin
         sock.send(esc.render_0x, 0)
-        logger.debug '指令已发送到打印机'
+        logger.debug "\e[35m  指令已发送到打印机  \e[0m"
       rescue StandardError => e
-        logger.debug "发送失败: #{e.message}"
+        logger.debug "\e[35m  发送失败: #{e.message}  \e[0m"
       ensure
         # 关闭连接
         sock.close unless sock.closed?
