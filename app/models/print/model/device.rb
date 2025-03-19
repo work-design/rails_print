@@ -15,5 +15,11 @@ module Print
       belongs_to :printer, polymorphic: true
     end
 
+    def sync_organ_from_printer
+      if printer.organ_id
+        self.organ_id = printer.organ_id
+      end
+    end
+
   end
 end

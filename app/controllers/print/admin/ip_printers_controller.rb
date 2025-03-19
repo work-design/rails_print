@@ -11,6 +11,10 @@ module Print
       @ip_printer.test_print
     end
 
+    def edit
+      @ip_printer.devices.presence || @ip_printer.devices.build
+    end
+
     private
     def set_ip_printer
       @ip_printer = IpPrinter.find params[:id]
@@ -23,7 +27,8 @@ module Print
     def ip_printer_params
       p = params.fetch(:ip_printer, {}).permit(
         :ip,
-        :port
+        :port,
+        devices_attributes: [:aim]
       )
       p.merge! default_form_params
     end
