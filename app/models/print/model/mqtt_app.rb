@@ -8,5 +8,10 @@ module Print
       attribute :base_url, :string
     end
 
+    def api
+      return @api if defined? @api
+      @api = EmqxApi.new(self)
+    end
+
   end
 end

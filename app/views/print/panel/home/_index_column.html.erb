@@ -1,7 +1,8 @@
-<div class="fixed-grid has-6-cols">
-  <div class="grid">
-    <%= link_to({ controller: 'print/panel/jia_bo_apps' }, data: { turbo_frame: 'body', action: 'menu-popup#enter' }, class: active_helper(controllers: ['apps' , 'templates', 'devices'], item: 'cell button is-fullwidth', active: 'cell button is-fullwidth is-active')) do %>
-      <span><%= t('print.panel.jia_bo_apps.index.title') %></span>
-    <% end %>
-  </div>
+<div class="grid">
+  <%= link_to({ controller: 'print/panel/mqtt_apps' }, data: { turbo_frame: 'body', action: 'menu-popup#enter' }, class: active_helper(controllers: ['mqtt_apps'], item: 'cell button is-fullwidth', active: 'cell button is-fullwidth is-active')) do %>
+    <span><%= t('print.panel.mqtt_apps.index.title') %></span>
+  <% end %>
+  <%= link_to({ controller: 'print/panel/jia_bo_apps' }, data: { turbo_frame: 'body', action: 'menu-popup#enter' }, class: active_helper(controllers: ['apps' , 'templates', 'devices'], item: 'cell button is-fullwidth', active: 'cell button is-fullwidth is-active')) do %>
+    <span><%= t('print.panel.jia_bo_apps.index.title') %></span>
+  <% end %>
 </div>
