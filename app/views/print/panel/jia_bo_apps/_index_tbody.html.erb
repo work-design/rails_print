@@ -15,7 +15,7 @@
   </div>
   <div data-show-target="item" class="visibility-hidden">
     <%= link_to({ controller: 'jia_bo_printers', jia_bo_app_id: model.id }, class: 'button is-small is-borderless') do %>
-      <i class="fa-solid fa-print text-info"></i>
+      <%= svg_tag 'print', class: 'icon text-info' %>
       <span class="ml-1"><%= t('.jia_bo_printers.index.title') %></span>
       <span>（<%= model.jia_bo_printers_count %>）</span>
     <% end %>
