@@ -1,5 +1,5 @@
 module Print
-  module Model::IpPrinter
+  module Model::Printer
     extend ActiveSupport::Concern
 
     included do
