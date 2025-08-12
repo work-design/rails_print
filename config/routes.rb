@@ -25,7 +25,7 @@ Rails.application.routes.draw do
           end
         end
         resources :jia_bo_printers
-        resources :ip_printers
+        resources :printers
       end
     end
 

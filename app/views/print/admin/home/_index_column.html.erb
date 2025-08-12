@@ -1,7 +1,7 @@
 <div class="fixed-grid has-6-cols">
   <div class="grid">
-    <%= link_to({ controller: 'print/admin/ip_printers' }, data: { turbo_frame: 'body', action: 'menu-popup#enter' }, class: 'cell button is-fullwidth') do %>
-      <span><%= t('print.admin.ip_printers.index.title') %></span>
+    <%= link_to({ controller: 'print/admin/printers' }, data: { turbo_frame: 'body', action: 'menu-popup#enter' }, class: 'cell button is-fullwidth') do %>
+      <span><%= t('print.admin.printers.index.title') %></span>
     <% end %>
     <%= link_to({ controller: 'print/admin/jia_bo_printers' }, data: { turbo_frame: 'body', action: 'menu-popup#enter' }, class: 'cell button is-fullwidth') do %>
       <span><%= t('print.admin.jia_bo_printers.index.title') %></span>
