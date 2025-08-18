@@ -3,8 +3,7 @@ module Print
     extend ActiveSupport::Concern
 
     included do
-      attribute :ip, :string
-      attribute :port, :string
+      attribute :uid, :string
 
       belongs_to :organ, class_name: 'Org::Organ', optional: true
       has_many :devices, as: :printer
