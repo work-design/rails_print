@@ -3,6 +3,7 @@ module Print
     before_action :set_jia_bo_apps
     before_action :set_jia_bo_printer, only: [:show, :edit, :update, :destroy, :actions, :test]
     before_action :set_new_jia_bo_printer, only: [:new, :create]
+    before_action :set_jia_bo_app, only: [:scan]
 
     def index
       @jia_bo_printers = JiaBoPrinter.default_where(default_params)
@@ -25,6 +26,10 @@ module Print
     private
     def set_jia_bo_apps
       @jia_bo_apps = JiaBoApp.all
+    end
+
+    def set_jia_bo_app
+      @jia_bo_app = JiaBoApp.find(params[:jia_bo_app_id])
     end
 
     def set_jia_bo_printer
