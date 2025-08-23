@@ -9,9 +9,9 @@ module Print
     end
 
     def scan
-      @device = @app.devices.find_or_initialize_by(device_id: params[:result])
-      @device.jia_bo_printers.find_or_initialize_by(organ_id: current_organ.id)
-      @device.save
+      @jia_bo_printer = @jia_bo_app.jia_bo_printers.find_or_initialize_by(device_id: params[:result])
+      @jia_bo_printer.devices.find_or_initialize_by(organ_id: current_organ.id)
+      @jia_bo_printer.save
     end
 
     def test
@@ -20,10 +20,6 @@ module Print
 
     def edit
       @jia_bo_printer.devices.presence || @jia_bo_printer.devices.build
-    end
-
-    def sync
-      @app.sync_devices
     end
 
     private

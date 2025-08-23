@@ -6,11 +6,11 @@
     <div
       data-controller="scan"
       data-action="click->scan#report"
-      class="button is-small is-radius"
+      class="button is-small is-rounded is-primary"
       data-report-url="<%= url_for(action: 'scan', app_id: model.id) %>"
     >
       <%= svg_tag 'plus' %>
-      <span class="text-success pl-1">添加打印机</span>
+      <span class="ml-1">添加打印机</span>
     </div>
   </div>
 </div>

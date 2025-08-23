@@ -19,12 +19,12 @@ Rails.application.routes.draw do
       end
       namespace :admin, defaults: { namespace: 'admin' } do
         root 'home#index'
-        resources :devices do
+        resources :devices
+        resources :jia_bo_printers do
           collection do
             post :scan
           end
         end
-        resources :jia_bo_printers
         resources :printers
       end
     end
