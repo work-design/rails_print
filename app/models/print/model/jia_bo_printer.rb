@@ -36,7 +36,7 @@ module Print
       remote_print(
         data: esc.render_raw,
         mode: 3,
-        cmd_type: cmd_type.upcase
+        cmd_type: 'ESC'
       )
     end
 
