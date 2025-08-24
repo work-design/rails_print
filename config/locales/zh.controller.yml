@@ -24,7 +24,7 @@ zh:
           title: 打印机
       devices:
         index:
-          title: 设置打印机
+          title: 打印机设置
       printers:
         index:
           title: 自有打印机

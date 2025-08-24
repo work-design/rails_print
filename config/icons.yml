@@ -1,3 +1,4 @@
 regular:
   - check
+  - ellipsis-vertical
   - print
