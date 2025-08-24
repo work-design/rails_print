@@ -11,7 +11,7 @@ module Print
 
     def scan
       @jia_bo_printer = @jia_bo_app.jia_bo_printers.find_or_initialize_by(device_id: params[:result])
-      @jia_bo_printer.devices.find_or_initialize_by(organ_id: current_organ.id)
+      @jia_bo_printer.organ = current_organ
       @jia_bo_printer.save
     end
 
