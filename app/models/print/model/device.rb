@@ -21,5 +21,13 @@ module Print
       end
     end
 
+    def print(&block)
+      printer.print(&block)
+    end
+
+    def print_later
+      PrintJob.perform_later(self)
+    end
+
   end
 end

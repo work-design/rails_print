@@ -25,9 +25,9 @@ zh:
       devices:
         index:
           title: 设置打印机
-      ip_printers:
+      printers:
         index:
-          title: IP 打印机
+          title: 自有打印机
       jia_bo_printers:
         index:
           title: 佳博云打印
