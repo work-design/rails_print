@@ -13,12 +13,12 @@ module Print
 
       belongs_to :organ, class_name: 'Org::Organ', optional: true
       belongs_to :printer, polymorphic: true
+
+      before_validation :sync_organ_from_printer, if: :new_record?
     end
 
     def sync_organ_from_printer
-      if printer.organ_id
-        self.organ_id = printer.organ_id
-      end
+      self.organ_id = printer.organ_id
     end
 
     def print(&block)

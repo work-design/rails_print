@@ -17,7 +17,7 @@ module Print
       belongs_to :organ, class_name: 'Org::Organ', optional: true
 
       belongs_to :jia_bo_app, counter_cache: true
-      has_many :devices, as: :printer
+      has_many :devices, as: :printer, dependent: :delete_all
 
       accepts_nested_attributes_for :devices
 
