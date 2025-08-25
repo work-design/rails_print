@@ -2,7 +2,3 @@
   <%= svg_tag 'trash' %>
   <span><%= t('.destroy.title') %></span>
 <% end %>
-<%= button_to({ action: 'update' }, method: :patch, params: { 'device_organ[default]': true }, class: 'text-info', form: { data: { turbo_confirm: t('.update.confirm') }, class: 'cell weui-actionsheet__cell_warn' }) do %>
-  <i class="fa-solid fa-check-double"></i>
-  <span>设为默认</span>
-<% end if @device_organ.device.approved? %>
