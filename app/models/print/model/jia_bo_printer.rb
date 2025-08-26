@@ -69,7 +69,7 @@ module Print
       r['code'] == 1 ? r['statusList'][0] : r
     end
 
-    # 取值范围 0-100，建议(0,25,50,75, 85,100)。
+    # 取值范围 0-100，建议(0, 25, 50, 75, 85, 100)。
     def send_volume(level = 20)
       api.send_volume level
     end
