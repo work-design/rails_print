@@ -1,4 +1,7 @@
 regular:
   - check
   - ellipsis-vertical
+  - eye
+  - pencil
   - print
+  - trash
