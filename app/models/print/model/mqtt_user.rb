@@ -15,7 +15,8 @@ module Print
     end
 
     def api
-      MQTT::Client.connect(
+      return @api if defined? @api
+      @api = MQTT::Client.connect(
         host: 'work_design-emqx',
         port: 5,
         username: username,
