@@ -4,8 +4,9 @@ module Print
 
     included do
       attribute :username, :string
-      attribute :salt, :string
-      attribute :password_hash, :string
+      attribute :password_digest, :string
+
+      has_secure_password validations: false
     end
 
   end
