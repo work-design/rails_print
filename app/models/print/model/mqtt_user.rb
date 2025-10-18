@@ -9,8 +9,8 @@ module Print
       attribute :password, :string
     end
 
-    def set_pass!(password, cost: 10)
-      self.password_hash = BCrypt::Password.create(password, cost: cost)
+    def set_pass!(pass = password, cost: 10)
+      self.password_hash = BCrypt::Password.create(pass, cost: cost)
       self.save
     end
 
