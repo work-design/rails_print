@@ -7,6 +7,7 @@ module Print
       attribute :username, :string
       attribute :password_hash, :string
       attribute :password, :string
+      attribute :is_superuser, :boolean, default: false
 
       has_many :mqtt_acls, primary_key: :username, foreign_key: :username
 
