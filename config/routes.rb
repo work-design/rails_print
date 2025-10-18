@@ -5,6 +5,8 @@ Rails.application.routes.draw do
       root 'home#index'
       resources :mqtt_apps
       resources :mqtt_acls
+      resources :mqtt_users
+      resources :mqtt_printers
       resources :jia_bo_apps do
         resources :jia_bo_printers do
           collection do

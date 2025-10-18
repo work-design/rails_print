@@ -20,6 +20,9 @@ zh:
       mqtt_acls:
         index:
           title: EMQX 授权设置
+      mqtt_printers:
+        index:
+          title: MQTT 打印机
     admin:
       title: 打印机
       home:
