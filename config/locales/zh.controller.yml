@@ -17,6 +17,9 @@ zh:
       mqtt_apps:
         index:
           title: MQTT 服务器
+      mqtt_acls:
+        index:
+          title: EMQX 授权设置
     admin:
       title: 打印机
       home:

@@ -4,6 +4,7 @@ Rails.application.routes.draw do
     namespace :panel, defaults: { namespace: 'panel' } do
       root 'home#index'
       resources :mqtt_apps
+      resources :mqtt_acls
       resources :jia_bo_apps do
         resources :jia_bo_printers do
           collection do
