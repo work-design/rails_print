@@ -29,13 +29,13 @@ module Print
     end
 
     def init_acls
-      ['${clientid}/unregistered', '${clientid}/confirm', 'zonelink/notice'].each do |topic|
+      ['${clientid}/unregistered', '${clientid}', '${clientid}/confirm', 'zonelink/notice'].each do |topic|
         mqtt_acls.find_or_initialize_by(topic: topic) do |acl|
           acl.action = 'subscribe'
         end
       end
 
-      ['cloudPrinter/register', 'cloudPrinter/ready', 'cloudPrinter/exception', 'cloudPrinter/heartbeat'].each do |topic|
+      ['cloudPrinter/register', 'cloudPrinter/ready', 'cloudPrinter/exception', 'cloudPrinter/heartbeat', 'lwtt'].each do |topic|
         mqtt_acls.find_or_initialize_by(topic: topic) do |acl|
           acl.action = 'publish'
         end
