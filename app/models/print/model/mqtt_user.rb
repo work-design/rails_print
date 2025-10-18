@@ -29,12 +29,17 @@ module Print
     end
 
     def init_acls
-      mqtt_acls.build(topic: '${clientid}/unregistered', action: 'subscribe')
-      mqtt_acls.build(topic: '${clientid}/confirm', action: 'subscribe')
-      mqtt_acls.build(topic: 'zonelink/notice', action: 'subscribe')
-      mqtt_acls.build(topic: 'cloudPrinter/register', action: 'publish')
-      mqtt_acls.build(topic: 'cloudPrinter/ready', action: 'publish')
-      mqtt_acls.build(topic: 'cloudPrinter/exception', action: 'publish')
+      ['${clientid}/unregistered', '${clientid}/confirm', 'zonelink/notice'].each do |topic|
+        mqtt_acls.find_or_initialize_by(topic: topic) do |acl|
+          acl.action = 'subscribe'
+        end
+      end
+
+      ['cloudPrinter/register', 'cloudPrinter/ready', 'cloudPrinter/exception', 'cloudPrinter/heartbeat'].each do |topic|
+        mqtt_acls.find_or_initialize_by(topic: topic) do |acl|
+          acl.action = 'publish'
+        end
+      end
     end
 
   end
