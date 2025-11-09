@@ -21,11 +21,11 @@ module Print
     end
 
     def register_success
-      api.publish "#{dev_imei}/unregistered", 'registerSuccess', false, 2
+      api.publish "#{dev_imei}/unregistered", 'registerSuccess', true, 2
     end
 
     def register_401
-      api.publish "#{dev_imei}/unregistered", 'registerFail@401', false, 2
+      api.publish "#{dev_imei}/unregistered", 'registerFail@401', true, 2
     end
 
   end
