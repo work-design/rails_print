@@ -16,8 +16,7 @@ module Print
 
     def api
       return @api if defined? @api
-      superuser = MqttUser.where(is_superuser: true).take
-      @api = superuser.api
+      @api = $superuser.api
     end
 
     def register_success
