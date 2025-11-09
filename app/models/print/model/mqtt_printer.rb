@@ -32,5 +32,15 @@ module Print
       api.publish "#{dev_imei}/confirm", "ready##{id}", false, 2
     end
 
+    def confirm_exception(payload)
+      _, id = payload.split('#')
+      api.publish "#{dev_imei}/confirm", "exception##{id}", false, 2
+    end
+
+    def confirm_complete(payload)
+      _, id = payload.split('#')
+      api.publish "#{dev_imei}/confirm", "complete##{id}", false, 2
+    end
+
   end
 end

@@ -1,6 +1,7 @@
 module Print
   class HomeController < BaseController
-    skip_before_action :verify_authenticity_token, only: [:message, :ready, :exception]
+    skip_before_action :verify_authenticity_token, only: [:message, :ready, :exception, :complete]
+    before_action :set_mqtt_printer, only: [:ready, :exception, :complete]
 
     def message
       @mqtt_printer = MqttPrinter.find_or_initialize_by(dev_imei: params[:clientid])
@@ -13,18 +14,28 @@ module Print
 
     # cloudPrinter/ready
     def ready
-      @mqtt_printer = MqttPrinter.find_by(dev_imei: params[:clientid])
       @mqtt_printer.confirm_ready(params[:payload])
 
       head :ok
     end
 
     # cloudPrinter/exception
-    def ready
-      @mqtt_printer = MqttPrinter.find_by(dev_imei: params[:clientid])
-      @mqtt_printer.confirm_ready(params[:payload])
+    def exception
+      @mqtt_printer.confirm_exception(params[:payload])
 
       head :ok
+    end
+
+    # cloudPrinter/complete
+    def complete
+      @mqtt_printer.confirm_complete(params[:payload])
+
+      head :ok
+    end
+
+    private
+    def set_mqtt_printer
+      @mqtt_printer = MqttPrinter.find_by(dev_imei: params[:clientid])
     end
 
   end
