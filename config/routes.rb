@@ -4,6 +4,7 @@ Rails.application.routes.draw do
     controller :home do
       post :message
       post :ready
+      post :exception
     end
 
     namespace :panel, defaults: { namespace: 'panel' } do
