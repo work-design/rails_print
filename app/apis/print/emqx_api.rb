@@ -18,6 +18,7 @@ module Print
             ids: id
           }
         },
+        qos: 2,
         **options
       )
     end
