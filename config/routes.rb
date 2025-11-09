@@ -1,6 +1,10 @@
 # frozen_string_literal: true
 Rails.application.routes.draw do
   namespace :print, defaults: { business: 'print' } do
+    controller :home do
+      post :message
+    end
+
     namespace :panel, defaults: { namespace: 'panel' } do
       root 'home#index'
       resources :mqtt_apps
@@ -18,6 +22,7 @@ Rails.application.routes.draw do
         end
       end
     end
+
     namespace :admin, defaults: { namespace: 'admin' } do
       root 'home#index'
       resources :devices
