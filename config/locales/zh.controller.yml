@@ -23,6 +23,9 @@ zh:
       mqtt_printers:
         index:
           title: MQTT 打印机
+      mqtt_users:
+        index:
+          title: MQTT 用户
     admin:
       title: 打印机
       home:
