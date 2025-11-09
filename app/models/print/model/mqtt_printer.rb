@@ -16,7 +16,7 @@ module Print
 
     def api
       return @api if defined? @api
-      @api = $mqtt_api
+      @api = $mqtt_user.api
     end
 
     def register_success
