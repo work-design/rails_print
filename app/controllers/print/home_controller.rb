@@ -11,5 +11,13 @@ module Print
       head :ok
     end
 
+    # cloudPrinter/ready
+    def ready
+      @mqtt_printer = MqttPrinter.find_by(dev_imei: params[:clientid])
+      @mqtt_printer.confirm_ready(params[:payload])
+
+      head :ok
+    end
+
   end
 end

@@ -3,7 +3,7 @@ module Print
     extend ActiveSupport::Concern
 
     included do
-      attribute :dev_imei, :string
+      attribute :dev_imei, :string, index: true
       attribute :dev_type, :string
       attribute :dev_vendor, :string
       attribute :dev_network, :string
@@ -25,6 +25,11 @@ module Print
 
     def register_401
       api.publish "#{dev_imei}/unregistered", 'registerFail@401', false, 2
+    end
+
+    def confirm_ready(payload)
+      _, id = payload.split('#')
+      api.publish "#{dev_imei}/confirm", "ready##{id}", false, 2
     end
 
   end

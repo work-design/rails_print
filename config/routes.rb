@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   namespace :print, defaults: { business: 'print' } do
     controller :home do
       post :message
+      post :ready
     end
 
     namespace :panel, defaults: { namespace: 'panel' } do
