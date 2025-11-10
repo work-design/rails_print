@@ -1,8 +1,8 @@
 module Print
   module Model::MqttPrinter
     extend ActiveSupport::Concern
-    PREFIX = ['1E', '10']
-    TAG = ['1B', '63']
+    PREFIX = ['1e', '10']
+    TAG = ['1b', '63']
 
     included do
       attribute :dev_imei, :string, index: true
@@ -75,7 +75,7 @@ module Print
       all = [task_size] + task_bytes + payload_size + payload_bytes + TAG + check
       all_size = [all.size].pack('N').bytes.map(&:to_16_str)
 
-      r = (PREFIX + all_size + all).map(&:upcase).join('')
+      r = (PREFIX + all_size + all).join('')
       logger.debug "The Str: #{r}"
 
       api.publish dev_imei, r, false, 2
