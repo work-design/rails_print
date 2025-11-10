@@ -74,7 +74,6 @@ module Print
 
       all = [task_size] + task_bytes + payload_size + payload_bytes + TAG + check
       all_size = [all.size].pack('N').bytes.map(&:to_16_str)
-      binding.b
 
       r = (PREFIX + all_size + all).map(&:upcase).join(' ')
       logger.debug "The Str: #{r}"
