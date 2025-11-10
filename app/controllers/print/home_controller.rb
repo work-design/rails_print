@@ -16,21 +16,21 @@ module Print
 
     # cloudPrinter/ready
     def ready
-      @mqtt_printer.confirm_ready(params[:payload])
+      @mqtt_printer.confirm(params[:payload], kind: 'ready')
 
       head :ok
     end
 
     # cloudPrinter/exception
     def exception
-      @mqtt_printer.confirm_exception(params[:payload])
+      @mqtt_printer.confirm(params[:payload], kind: 'exception')
 
       head :ok
     end
 
     # cloudPrinter/complete
     def complete
-      @mqtt_printer.confirm_complete(params[:payload])
+      @mqtt_printer.confirm(params[:payload], kind: 'complete')
 
       head :ok
     end
