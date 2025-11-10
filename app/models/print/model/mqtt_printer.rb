@@ -1,8 +1,8 @@
 module Print
   module Model::MqttPrinter
     extend ActiveSupport::Concern
-    PREFIX = ['1e', '10']
-    TAG = ['1b', '63']
+    PREFIX = ['1E', '10']
+    TAG = ['1B', '63']
 
     included do
       attribute :dev_imei, :string, index: true
