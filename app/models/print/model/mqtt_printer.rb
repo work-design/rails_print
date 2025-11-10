@@ -1,7 +1,8 @@
 module Print
   module Model::MqttPrinter
     extend ActiveSupport::Concern
-    PREFIX = '1E 10'
+    PREFIX = ['1E' '10']
+    TAG = ['1B' '63']
 
     included do
       attribute :dev_imei, :string, index: true
@@ -55,8 +56,36 @@ module Print
       api.publish "#{dev_imei}/confirm", "#{kind}##{id}", false, 2
     end
 
-    def print()
-      r = [PREFIX, '00 00 00 11 04 31 30 30 31 00 00 00 04 41 42 43 44 1B 63 2d 32'].join(' ')
+    def print_pos(text = '')
+      pr = BaseEsc.new
+      pr.text(text)
+
+      payload = pr.render
+      print(payload)
+
+    end
+
+    def print(payload, task: '1001')
+      task_bytes = task.bytes.map(&:to_16_str)
+      task_size = task_bytes.size.to_16_str
+      payload_bytes = payload.map(&:to_16_str)
+      payload_size = [payload_bytes.size].pack('N').bytes.map(&:to_16_str)
+      all_size = [all.size].pack('N').bytes.map(&:to_16_str)
+      x = Crc16Util.check(payload_bytes)
+
+      r = [
+        *PREFIX,
+        *all_size,
+        task_size,
+        *task_bytes,
+        *payload_size,
+        *payload_bytes,
+        *TAG
+
+      ].join(' ')
+
+      logger.debug "The Str: #{r}"
+
       api.publish dev_imei, r, false, 2
     end
 
