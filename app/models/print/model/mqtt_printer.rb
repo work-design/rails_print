@@ -62,7 +62,6 @@ module Print
 
       payload = pr.render
       print(payload)
-
     end
 
     def print(payload, task: '1001')
@@ -72,6 +71,7 @@ module Print
       payload_size = [payload_bytes.size].pack('N').bytes.map(&:to_16_str)
       all_size = [all.size].pack('N').bytes.map(&:to_16_str)
       x = Crc16Util.check(payload_bytes)
+      check = [x].pack('n').bytes.map(&:to_16_str)
 
       r = [
         *PREFIX,
@@ -80,13 +80,14 @@ module Print
         *task_bytes,
         *payload_size,
         *payload_bytes,
-        *TAG
-
+        *TAG,
+        *check
       ].join(' ')
 
       logger.debug "The Str: #{r}"
 
-      api.publish dev_imei, r, false, 2
+      #api.publish dev_imei, r, false, 2
+      r
     end
 
   end
