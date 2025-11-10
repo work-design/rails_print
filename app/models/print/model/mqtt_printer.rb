@@ -1,6 +1,7 @@
 module Print
   module Model::MqttPrinter
     extend ActiveSupport::Concern
+    PREFIX = '1E 10'
 
     included do
       attribute :dev_imei, :string, index: true
@@ -52,6 +53,11 @@ module Print
     def confirm(payload, kind: 'ready')
       _, id = payload.split('#')
       api.publish "#{dev_imei}/confirm", "#{kind}##{id}", false, 2
+    end
+
+    def print()
+      r = [PREFIX, '00 00 00 11 04 31 30 30 31 00 00 00 04 41 42 43 44 1B 63 2d 32'].join(' ')
+      api.publish dev_imei, r, false, 2
     end
 
   end
