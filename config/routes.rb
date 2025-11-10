@@ -11,8 +11,9 @@ Rails.application.routes.draw do
     namespace :panel, defaults: { namespace: 'panel' } do
       root 'home#index'
       resources :mqtt_apps
-      resources :mqtt_acls
-      resources :mqtt_users
+      resources :mqtt_users do
+        resources :mqtt_acls
+      end
       resources :mqtt_printers
       resources :jia_bo_apps do
         resources :jia_bo_printers do

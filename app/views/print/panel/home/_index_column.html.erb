@@ -5,9 +5,6 @@
   <%= link_to({ controller: 'print/panel/mqtt_users' }, data: { turbo_frame: 'panel', action: 'menu-popup#enter' }, class: active_helper(controllers: ['mqtt_apps'], item: 'cell button is-fullwidth', active: 'cell button is-fullwidth is-active')) do %>
     <span><%= t('print.panel.mqtt_users.index.title') %></span>
   <% end %>
-  <%= link_to({ controller: 'print/panel/mqtt_acls' }, data: { turbo_frame: 'panel', action: 'menu-popup#enter' }, class: active_helper(controllers: ['mqtt_acls'], item: 'cell button is-fullwidth', active: 'cell button is-fullwidth is-active')) do %>
-    <span><%= t('print.panel.mqtt_acls.index.title') %></span>
-  <% end %>
   <%= link_to({ controller: 'print/panel/mqtt_printers' }, data: { turbo_frame: 'panel', action: 'menu-popup#enter' }, class: active_helper(controllers: ['mqtt_printers'], item: 'cell button is-fullwidth', active: 'cell button is-fullwidth is-active')) do %>
     <span><%= t('print.panel.mqtt_printers.index.title') %></span>
   <% end %>
