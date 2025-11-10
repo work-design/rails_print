@@ -7,11 +7,33 @@ module Print
       attribute :dev_type, :string
       attribute :dev_vendor, :string
       attribute :dev_network, :string
+      attribute :dev_tel, :string
       attribute :dev_spec, :string
+      attribute :dev_cut, :boolean
       attribute :dev_desc, :string
+      attribute :dev_ip, :string
       attribute :online, :boolean
+      attribute :extra, :json, default: {}
 
       #belongs_to :mqtt_app
+    end
+
+    def assign_info(payload)
+      infos = payload.split('#')
+
+      self.extra = {
+        '终端类型' => infos[0],
+        '注册期限' => infos[3],
+        '方案提供商编号' => infos[4],
+        '方案编号' => infos[6],
+        '版本序号' => infos[7],
+        '版本描述' => infos[8]
+      }
+      self.dev_vendor = infos[2]
+      self.dev_network = infos[5]
+      self.dev_tel = infos[9]
+      self.dev_spec = infos[10]
+      self.dev_cut = infos[11]
     end
 
     def api

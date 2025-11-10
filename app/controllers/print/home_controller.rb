@@ -5,6 +5,8 @@ module Print
 
     def message
       @mqtt_printer = MqttPrinter.find_or_initialize_by(dev_imei: params[:clientid])
+      @mqtt_printer.dev_ip = params[:peerhost]
+      @mqtt_printer.assign_info(params[:payload])
       @mqtt_printer.save
 
       @mqtt_printer.register_success
