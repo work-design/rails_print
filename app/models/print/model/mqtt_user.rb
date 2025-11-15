@@ -15,8 +15,12 @@ module Print
     end
 
     def set_pass!(pass = password, cost: 10)
-      self.password_hash = BCrypt::Password.create(pass, cost: cost)
+      self.set_pass(pass, cost: cost)
       self.save
+    end
+
+    def set_pass(pass = password, cost: 10)
+      self.password_hash = BCrypt::Password.create(pass, cost: cost)
     end
 
     def api

@@ -15,9 +15,26 @@ module Print
       attribute :dev_desc, :string
       attribute :dev_ip, :string
       attribute :online, :boolean
+      attribute :username, :string
+      attribute :password, :string
       attribute :extra, :json, default: {}
 
-      #belongs_to :mqtt_app
+      has_one :mqtt_user, primary_key: :username, foreign_key: :username, dependent: :destroy
+
+      before_validation :init_username, if: :dev_imei_changed?
+      after_save :init_mqtt_user, if: :saved_change_to_username?
+    end
+
+    def init_username
+      r = Digest::MD5.hexdigest("zonelink-#{dev_imei}").upcase
+      self.username = r[0..11]
+      self.password = r[-16..-1]
+    end
+
+    def init_mqtt_user
+      mqtt_user || build_mqtt_user
+      mqtt_user.set_pass
+      mqtt_user.save
     end
 
     def assign_info(payload)

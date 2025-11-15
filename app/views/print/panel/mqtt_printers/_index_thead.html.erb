@@ -1,3 +1,7 @@
-<th><%= Print::MqttAcl.human_attribute_name(:dev_imei) %></th>
-<th><%= Print::MqttAcl.human_attribute_name(:dev_desc) %></th>
-<th><%= Print::MqttAcl.human_attribute_name(:online) %></th>
+<th><%= Print::MqttUser.human_attribute_name(:dev_imei) %></th>
+<th><%= Print::MqttUser.human_attribute_name(:dev_desc) %></th>
+<th><%= Print::MqttUser.human_attribute_name(:online) %></th>
+<th>
+  <p><%= Print::MqttUser.human_attribute_name(:username) %></p>
+  <p><%= Print::MqttUser.human_attribute_name(:password) %></p>
+</th>
