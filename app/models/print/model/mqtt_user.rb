@@ -33,7 +33,7 @@ module Print
     end
 
     def init_acls
-      ['${clientid}/unregistered', '${clientid}', '${clientid}/confirm', 'zonelink/notice'].each do |topic|
+      ['${clientid}/unregistered', '${clientid}', '${clientid}/confirm', 'zonelink/notice', 'linlishenghuo/notice'].each do |topic|
         mqtt_acls.find_or_initialize_by(topic: topic) do |acl|
           acl.action = 'subscribe'
         end

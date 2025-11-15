@@ -26,7 +26,7 @@ module Print
     end
 
     def init_username
-      r = Digest::MD5.hexdigest("zonelink-#{dev_imei}").upcase
+      r = Digest::MD5.hexdigest("linlishenghuo-#{dev_imei}").upcase
       self.username = r[0..11]
       self.password = r[-16..-1]
     end
