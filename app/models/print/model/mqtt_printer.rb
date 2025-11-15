@@ -33,7 +33,7 @@ module Print
 
     def init_mqtt_user
       mqtt_user || build_mqtt_user
-      mqtt_user.set_pass
+      mqtt_user.set_pass(password)
       mqtt_user.save
     end
 
